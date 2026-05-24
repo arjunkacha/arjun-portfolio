@@ -1,441 +1,556 @@
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
+import { useState } from "react";
 
 function App() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const projects = [
+    {
+      title: "ML-Based Intrusion Detection System",
+      description: "Advanced machine learning system for detecting network intrusions with high accuracy.",
+      tech: ["Python", "TensorFlow", "Machine Learning"],
+      github: "https://github.com/arjunkacha",
+    },
+    {
+      title: "AI-Powered Resume Screening System",
+      description: "Intelligent system that automatically screens and ranks resumes using NLP.",
+      tech: ["Python", "NLP", "Flask"],
+      github: "https://github.com/arjunkacha",
+    },
+    {
+      title: "Smart Study Planner & Exam Preparation Tracker",
+      description: "Adaptive study planning tool with AI-driven exam preparation recommendations.",
+      tech: ["React", "Node.js", "MongoDB"],
+      github: "https://github.com/arjunkacha",
+    },
+    {
+      title: "Image Generation using cGAN",
+      description: "Conditional Generative Adversarial Network for intelligent image synthesis.",
+      tech: ["PyTorch", "GAN", "Python"],
+      github: "https://github.com/arjunkacha",
+    },
+    {
+      title: "TravelVista",
+      description: "Modern travel planning application with real-time recommendations and booking.",
+      tech: ["Flutter", "Firebase", "Dart"],
+      github: "https://github.com/arjunkacha",
+    },
+  ];
+
+  const skills = [
+    {
+      category: "Programming",
+      items: ["Python", "JavaScript", "Dart", "C++", "SQL"],
+    },
+    {
+      category: "AI/ML",
+      items: ["TensorFlow", "PyTorch", "NLP", "Machine Learning", "Deep Learning"],
+    },
+    {
+      category: "Mobile Development",
+      items: ["Flutter", "React Native", "Dart", "Firebase"],
+    },
+    {
+      category: "Cybersecurity",
+      items: ["Network Security", "Cryptography", "Penetration Testing", "SSL/TLS"],
+    },
+    {
+      category: "Cloud & Tools",
+      items: ["AWS", "Firebase", "Docker", "Git", "Linux"],
+    },
+  ];
+
+  // Framer Motion animation configuration
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } 
+    },
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
   return (
-    <div className="bg-slate-950 text-white min-h-screen relative overflow-hidden">
+    <div className="bg-[#ffffff] text-[#0f172a] min-h-screen font-sans antialiased selection:bg-[#0ea5e9]/10 selection:text-[#0ea5e9]">
+      
+      {/* Sticky Premium Navbar */}
+      <nav className="fixed top-0 w-full bg-[#ffffff]/80 backdrop-blur-md z-50 border-b border-[#e2e8f0]/80 transition-all duration-300">
+        <div className="max-w-6xl mx-auto px-6 h-16 flex justify-between items-center">
+          <motion.a
+            href="#"
+            className="text-lg font-bold tracking-tight text-[#0f172a] flex items-center gap-2"
+            whileHover={{ scale: 0.98 }}
+            whileTap={{ scale: 0.96 }}
+          >
+            <span className="w-2.5 h-2.5 rounded-full bg-[#0ea5e9]"></span>
+            Arjun Kacha
+          </motion.a>
 
-      {/* Background Glow Effects */}
+          {/* Desktop Navigation */}
+          <ul className="hidden md:flex items-center gap-8 text-[14px] font-medium text-[#475569]">
+            {["About", "Skills", "Projects", "Contact"].map((item) => (
+              <li key={item}>
+                <a
+                  href={`#${item.toLowerCase()}`}
+                  className="hover:text-[#0ea5e9] transition-colors duration-200"
+                >
+                  {item}
+                </a>
+              </li>
+            ))}
+          </ul>
 
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-cyan-500 opacity-10 blur-3xl rounded-full"></div>
+          <div className="hidden md:block">
+            <motion.a
+              href="#contact"
+              className="inline-flex items-center justify-center px-5 py-2 text-xs font-semibold text-white bg-[#0f172a] rounded-full hover:bg-slate-800 shadow-sm transition-all duration-200"
+              whileHover={{ y: -1 }}
+              whileTap={{ y: 0 }}
+            >
+              Get in Touch
+            </motion.a>
+          </div>
 
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500 opacity-10 blur-3xl rounded-full"></div>
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden p-2 text-[#475569] hover:text-[#0f172a] focus:outline-none"
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
+          </button>
+        </div>
 
-      {/* Navbar */}
-      <nav className="flex justify-between items-center px-8 py-5 border-b border-slate-800 sticky top-0 bg-slate-950/80 backdrop-blur-md z-50">
-
-        <h1 className="text-2xl font-bold text-cyan-400">
-          Arjun Kacha
-        </h1>
-
-        <ul className="hidden md:flex gap-8 text-sm font-medium">
-
-          <li>
-            <a href="#about" className="hover:text-cyan-400 transition">
-              About
-            </a>
-          </li>
-
-          <li>
-            <a href="#skills" className="hover:text-cyan-400 transition">
-              Skills
-            </a>
-          </li>
-
-          <li>
-            <a href="#projects" className="hover:text-cyan-400 transition">
-              Projects
-            </a>
-          </li>
-
-          <li>
-            <a href="#contact" className="hover:text-cyan-400 transition">
-              Contact
-            </a>
-          </li>
-
-        </ul>
-
+        {/* Mobile Dropdown Menu */}
+        {isMobileMenuOpen && (
+          <motion.div 
+            className="md:hidden bg-white border-b border-[#e2e8f0] px-6 py-6 space-y-4 shadow-lg absolute w-full left-0 top-16"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+          >
+            <div className="flex flex-col gap-4">
+              {["About", "Skills", "Projects", "Contact"].map((item) => (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-base font-medium text-[#475569] hover:text-[#0ea5e9] transition-colors"
+                >
+                  {item}
+                </a>
+              ))}
+              <a
+                href="#contact"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="inline-flex items-center justify-center w-full px-5 py-3 text-sm font-semibold text-white bg-[#0f172a] rounded-full hover:bg-slate-800 shadow-sm transition-all"
+              >
+                Get in Touch
+              </a>
+            </div>
+          </motion.div>
+        )}
       </nav>
 
       {/* Hero Section */}
-      <motion.section
-        className="min-h-screen flex items-center justify-center px-6"
-        initial={{ opacity: 0, y: 80 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-      >
+      <section className="relative min-h-screen flex items-center justify-center px-6 pt-20 bg-gradient-to-b from-[#ffffff] via-[#ffffff] to-[#f8fafc]">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={staggerContainer}
+            className="space-y-8"
+          >
+            {/* Tag / Badge */}
+            <motion.div variants={fadeInUp} className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#0ea5e9]/5 rounded-full text-xs font-semibold text-[#0ea5e9] tracking-wide uppercase">
+              Portfolio
+            </motion.div>
 
-        <div className="max-w-5xl w-full grid md:grid-cols-2 gap-12 items-center">
+            {/* Title */}
+            <motion.h1 
+              variants={fadeInUp}
+              className="text-5xl md:text-7xl font-extrabold tracking-tight text-[#0f172a]"
+            >
+              Arjun Kacha
+            </motion.h1>
 
-          {/* Left Side */}
-          <div>
+            {/* Subtitle */}
+            <motion.p 
+              variants={fadeInUp}
+              className="text-lg md:text-xl text-[#0ea5e9] font-semibold tracking-wider uppercase"
+            >
+              AI • Flutter • Cybersecurity
+            </motion.p>
 
-            <p className="text-cyan-400 text-lg mb-3">
-              Hello, I'm
-            </p>
+            {/* Description */}
+            <motion.p 
+              variants={fadeInUp}
+              className="text-base md:text-lg text-[#475569] leading-relaxed max-w-2xl mx-auto"
+            >
+              Building intelligent software solutions with AI, mobile development, and cloud technologies.
+            </motion.p>
 
-            <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-              Arjun
-              <span className="text-cyan-400"> Kacha</span>
-            </h1>
-
-            <h2 className="text-2xl md:text-3xl text-slate-300 mt-6 font-semibold">
-              IT Student | Flutter Developer
-            </h2>
-
-            <p className="text-slate-400 mt-6 leading-7 text-lg">
-              Passionate about AI, Cybersecurity, Cloud Computing,
-              and building real-world software solutions.
-            </p>
-
-            {/* Buttons */}
-            <div className="flex gap-4 mt-8 flex-wrap">
-
-              <a
+            {/* CTA Buttons */}
+            <motion.div 
+              variants={fadeInUp}
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4"
+            >
+              <motion.a
                 href="#projects"
-                className="bg-cyan-400 text-black px-6 py-3 rounded-xl font-semibold hover:scale-105 transition"
+                className="w-full sm:w-auto px-8 py-3.5 bg-[#0f172a] text-white rounded-full font-medium text-sm hover:bg-[#1e293b] shadow-sm hover:shadow-md transition-all duration-200 text-center"
+                whileHover={{ y: -2 }}
+                whileTap={{ y: 0 }}
               >
                 View Projects
-              </a>
+              </motion.a>
 
-              <a
-                href="https://github.com/arjunkacha"
-                target="_blank"
-                className="border border-cyan-400 text-cyan-400 px-6 py-3 rounded-xl font-semibold hover:bg-cyan-400 hover:text-black transition"
-              >
-                GitHub
-              </a>
-
-              <a
+              <motion.a
                 href="/resume.pdf"
-                target="_blank"
-                className="border border-slate-600 px-6 py-3 rounded-xl font-semibold hover:border-cyan-400 hover:text-cyan-400 transition"
+                download
+                className="w-full sm:w-auto px-8 py-3.5 border border-[#e2e8f0] bg-white text-[#475569] rounded-full font-medium text-sm hover:text-[#0f172a] hover:bg-[#f8fafc] shadow-xs hover:shadow-sm transition-all duration-200 text-center inline-flex items-center justify-center gap-2"
+                whileHover={{ y: -2 }}
+                whileTap={{ y: 0 }}
               >
-                Resume
-              </a>
+                <svg className="w-4 h-4 text-[#475569]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" x2="12" y1="15" y2="3" />
+                </svg>
+                Download Resume
+              </motion.a>
+            </motion.div>
+          </motion.div>
 
-            </div>
-
-          </div>
-
-          {/* Right Side */}
-          <div className="flex justify-center">
-
-            <div className="relative">
-
-              {/* Glow */}
-              <div className="absolute inset-0 bg-cyan-400 blur-3xl opacity-20 rounded-full"></div>
-
-              {/* Card */}
-              <div className="relative bg-slate-900 border border-slate-800 p-8 rounded-3xl shadow-2xl w-[320px]">
-
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                  <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                </div>
-
-                <pre className="text-sm text-cyan-300 overflow-x-auto">
-                  {`const developer = {
-  name: "Arjun Kacha",
-  skills: [
-    "Flutter",
-    "AI/ML",
-    "Cybersecurity",
-    "Cloud"
-  ],
-  passion: "Building Projects"
-}`}
-                </pre>
-
-              </div>
-
-            </div>
-
-          </div>
-
+          {/* Minimal scroll down indicator */}
+          <motion.div 
+            className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:block"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1, duration: 1 }}
+          >
+            <motion.div
+              animate={{ y: [0, 6, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="flex flex-col items-center gap-2 cursor-pointer"
+              onClick={() => {
+                document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
+              }}
+            >
+              <span className="text-[11px] font-medium tracking-widest text-[#475569] uppercase">Scroll</span>
+              <svg className="w-4 h-4 text-[#475569]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7-7-7" />
+              </svg>
+            </motion.div>
+          </motion.div>
         </div>
-
-      </motion.section>
+      </section>
 
       {/* About Section */}
-      <motion.section
-        id="about"
-        className="max-w-6xl mx-auto px-6 py-28"
-        initial={{ opacity: 0, y: 60 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-      >
+      <section id="about" className="py-32 px-6 bg-[#ffffff]">
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+            className="grid md:grid-cols-5 gap-12 md:gap-16 items-start"
+          >
+            {/* Header info */}
+            <div className="md:col-span-2 space-y-4">
+              <motion.div variants={fadeInUp} className="text-xs font-bold tracking-wider uppercase text-[#0ea5e9]">
+                About Me
+              </motion.div>
+              <motion.h2 
+                variants={fadeInUp} 
+                className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#0f172a]"
+              >
+                IT Student & Software Builder
+              </motion.h2>
+            </div>
 
-        <h2 className="text-4xl font-bold mb-10 text-cyan-400">
-          About Me
-        </h2>
+            {/* Description list */}
+            <div className="md:col-span-3 space-y-6 text-[#475569] text-base md:text-lg leading-relaxed font-normal">
+              <motion.p variants={fadeInUp}>
+                I'm an IT student with a strong passion for building intelligent, secure, and user-centric solutions. My focus areas lie at the cross-section of <strong className="font-semibold text-[#0f172a]">Artificial Intelligence</strong>, <strong className="font-semibold text-[#0f172a]">Mobile Development</strong>, and <strong className="font-semibold text-[#0f172a]">Cybersecurity</strong>.
+              </motion.p>
+              <motion.p variants={fadeInUp}>
+                Using Flutter for building fast cross-platform applications and advanced frameworks for AI, I build complete systems that combine sleek design with secure foundations. I love diving deep into cloud architectures and studying robust systems, aiming to deliver software that is highly functional, responsive, and secure.
+              </motion.p>
 
-        <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 leading-8 text-slate-300 text-lg">
-
-          <p>
-            I am an IT student passionate about building real-world
-            software solutions in AI, Cybersecurity, Flutter
-            Development, and Cloud Computing.
-          </p>
-
-          <p className="mt-6">
-            I enjoy creating modern applications, exploring emerging
-            technologies, and continuously improving my technical
-            skills through projects and hands-on learning.
-          </p>
-
+              {/* Minimalist Bento-style Highlights */}
+              <motion.div 
+                variants={fadeInUp}
+                className="grid grid-cols-2 gap-4 pt-6"
+              >
+                <div className="p-5 rounded-2xl bg-[#f8fafc] border border-[#e2e8f0] shadow-2xs">
+                  <span className="block text-2xl font-bold text-[#0f172a]">AI/ML</span>
+                  <span className="text-xs text-[#475569] font-medium uppercase tracking-wide">Intelligent Systems</span>
+                </div>
+                <div className="p-5 rounded-2xl bg-[#f8fafc] border border-[#e2e8f0] shadow-2xs">
+                  <span className="block text-2xl font-bold text-[#0f172a]">Flutter</span>
+                  <span className="text-xs text-[#475569] font-medium uppercase tracking-wide">Mobile Expert</span>
+                </div>
+                <div className="p-5 rounded-2xl bg-[#f8fafc] border border-[#e2e8f0] shadow-2xs">
+                  <span className="block text-2xl font-bold text-[#0f172a]">Sec</span>
+                  <span className="text-xs text-[#475569] font-medium uppercase tracking-wide">Cybersecurity Focus</span>
+                </div>
+                <div className="p-5 rounded-2xl bg-[#f8fafc] border border-[#e2e8f0] shadow-2xs">
+                  <span className="block text-2xl font-bold text-[#0f172a]">Cloud</span>
+                  <span className="text-xs text-[#475569] font-medium uppercase tracking-wide">Modern Tools</span>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
-
-      </motion.section>
+      </section>
 
       {/* Skills Section */}
-      <section
-        id="skills"
-        className="max-w-6xl mx-auto px-6 py-20"
-      >
-
-        <h2 className="text-4xl font-bold mb-12 text-cyan-400">
-          Skills
-        </h2>
-
-        <div className="grid md:grid-cols-3 gap-8">
-
-          {/* Languages */}
-          <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 hover:border-cyan-400 transition">
-
-            <h3 className="text-2xl font-semibold mb-6">
-              Languages
-            </h3>
-
-            <div className="flex flex-wrap gap-3">
-              {["Python", "Java", "JavaScript", "Dart"].map((skill) => (
-                <span
-                  key={skill}
-                  className="bg-slate-800 px-4 py-2 rounded-xl text-sm"
-                >
-                  {skill}
-                </span>
-              ))}
+      <section id="skills" className="py-32 px-6 bg-[#f8fafc] border-y border-[#e2e8f0]/60">
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+            className="space-y-16"
+          >
+            <div className="text-center space-y-4 max-w-2xl mx-auto">
+              <motion.div variants={fadeInUp} className="text-xs font-bold tracking-wider uppercase text-[#0ea5e9]">
+                Expertise
+              </motion.div>
+              <motion.h2 
+                variants={fadeInUp}
+                className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#0f172a]"
+              >
+                Skills & Technologies
+              </motion.h2>
+              <motion.p 
+                variants={fadeInUp}
+                className="text-sm md:text-base text-[#475569]"
+              >
+                Curated technical skillset grouped by core capabilities, reflecting clean implementation methodologies.
+              </motion.p>
             </div>
 
-          </div>
-
-          {/* Technologies */}
-          <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 hover:border-cyan-400 transition">
-
-            <h3 className="text-2xl font-semibold mb-6">
-              Technologies
-            </h3>
-
-            <div className="flex flex-wrap gap-3">
-              {["Flutter", "Firebase", "AWS", "Git"].map((skill) => (
-                <span
-                  key={skill}
-                  className="bg-slate-800 px-4 py-2 rounded-xl text-sm"
+            <div className="grid md:grid-cols-2 gap-6">
+              {skills.map((skillGroup, idx) => (
+                <motion.div
+                  key={idx}
+                  className="bg-white rounded-2xl p-6 border border-[#e2e8f0] shadow-xs hover:shadow-sm transition-all duration-300"
+                  variants={fadeInUp}
+                  whileHover={{ y: -2 }}
                 >
-                  {skill}
-                </span>
+                  <h3 className="text-base font-bold text-[#0f172a] mb-4 flex items-center gap-2">
+                    <span className="w-1.5 h-4 bg-[#0ea5e9] rounded-full"></span>
+                    {skillGroup.category}
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {skillGroup.items.map((skill, i) => (
+                      <span
+                        key={i}
+                        className="px-3 py-1.5 bg-[#f8fafc] text-[#475569] text-xs font-medium rounded-lg border border-[#e2e8f0] hover:bg-[#0ea5e9]/5 hover:text-[#0ea5e9] hover:border-[#0ea5e9]/20 transition-all duration-200"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </motion.div>
               ))}
             </div>
-
-          </div>
-
-          {/* Domains */}
-          <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 hover:border-cyan-400 transition">
-
-            <h3 className="text-2xl font-semibold mb-6">
-              Domains
-            </h3>
-
-            <div className="flex flex-wrap gap-3">
-              {[
-                "AI/ML",
-                "Cybersecurity",
-                "Cloud",
-                "Web Development",
-              ].map((skill) => (
-                <span
-                  key={skill}
-                  className="bg-slate-800 px-4 py-2 rounded-xl text-sm"
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-
-          </div>
-
+          </motion.div>
         </div>
-
       </section>
 
       {/* Projects Section */}
-      <section
-        id="projects"
-        className="max-w-6xl mx-auto px-6 py-24"
-      >
-
-        <h2 className="text-4xl font-bold mb-12 text-cyan-400">
-          Featured Projects
-        </h2>
-
-        <div className="grid md:grid-cols-3 gap-8">
-
-          {/* Project 1 */}
+      <section id="projects" className="py-32 px-6 bg-[#ffffff]">
+        <div className="max-w-4xl mx-auto">
           <motion.div
-            whileHover={{ y: -10, scale: 1.02 }}
-            transition={{ type: "spring", stiffness: 300 }}
-            className="bg-slate-900 border border-slate-800 rounded-3xl p-8 hover:border-cyan-400"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+            className="space-y-16"
           >
-
-            <h3 className="text-2xl font-semibold mb-4">
-              SentinelX
-            </h3>
-
-            <p className="text-slate-400 leading-7">
-              AI-powered threat monitoring system focused on detecting
-              suspicious activities and monitoring system security.
-            </p>
-
-            <div className="flex flex-wrap gap-2 mt-6">
-              {["Python", "AI", "Cybersecurity"].map((tech) => (
-                <span
-                  key={tech}
-                  className="bg-slate-800 px-3 py-1 rounded-lg text-sm"
-                >
-                  {tech}
-                </span>
-              ))}
+            <div className="text-center space-y-4 max-w-2xl mx-auto">
+              <motion.div variants={fadeInUp} className="text-xs font-bold tracking-wider uppercase text-[#0ea5e9]">
+                Featured Works
+              </motion.div>
+              <motion.h2 
+                variants={fadeInUp}
+                className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#0f172a]"
+              >
+                Projects
+              </motion.h2>
+              <motion.p 
+                variants={fadeInUp}
+                className="text-sm md:text-base text-[#475569]"
+              >
+                A selective collection of projects demonstrating clean architecture, performance, and security principles.
+              </motion.p>
             </div>
 
-            <a
-              href="https://github.com/arjunkacha"
-              target="_blank"
-              className="inline-block mt-6 border border-cyan-400 text-cyan-400 px-5 py-2 rounded-xl hover:bg-cyan-400 hover:text-black transition"
-            >
-              View Project
-            </a>
-
-          </motion.div>
-
-          {/* Project 2 */}
-          <motion.div
-            whileHover={{ y: -10, scale: 1.02 }}
-            transition={{ type: "spring", stiffness: 300 }}
-            className="bg-slate-900 border border-slate-800 rounded-3xl p-8 hover:border-cyan-400"
-          >
-
-            <h3 className="text-2xl font-semibold mb-4">
-              Intrusion Detection System
-            </h3>
-
-            <p className="text-slate-400 leading-7">
-              Machine learning-based intrusion detection system for
-              identifying and classifying suspicious network traffic.
-            </p>
-
-            <div className="flex flex-wrap gap-2 mt-6">
-              {["Machine Learning", "Python", "Security"].map((tech) => (
-                <span
-                  key={tech}
-                  className="bg-slate-800 px-3 py-1 rounded-lg text-sm"
+            <div className="space-y-6">
+              {projects.map((project, idx) => (
+                <motion.div
+                  key={idx}
+                  className="bg-white rounded-2xl p-6 md:p-8 border border-[#e2e8f0] shadow-sm hover:shadow-md transition-all duration-300"
+                  variants={fadeInUp}
+                  whileHover={{ y: -3 }}
                 >
-                  {tech}
-                </span>
+                  <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
+                    <div className="space-y-4 flex-1">
+                      <div className="space-y-2">
+                        <span className="text-[10px] font-bold text-[#0ea5e9] tracking-wider uppercase">Project 0{idx + 1}</span>
+                        <h3 className="text-xl md:text-2xl font-bold text-[#0f172a]">{project.title}</h3>
+                      </div>
+                      
+                      <p className="text-sm md:text-base text-[#475569] leading-relaxed">
+                        {project.description}
+                      </p>
+
+                      {/* Tech Chips */}
+                      <div className="flex flex-wrap gap-2 pt-2">
+                        {project.tech.map((t, i) => (
+                          <span key={i} className="px-2.5 py-1 bg-[#f8fafc] text-[#475569] text-xs font-medium rounded-md border border-[#e2e8f0]">
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="pt-2 md:pt-0 self-start md:self-center">
+                      <motion.a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-[#e2e8f0] hover:bg-[#f8fafc] text-[#475569] hover:text-[#0f172a] rounded-full text-xs font-semibold shadow-2xs transition-all duration-200"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                          <path d="M9 18c-4.51 2-5-2-7-2" />
+                        </svg>
+                        Source Code
+                      </motion.a>
+                    </div>
+                  </div>
+                </motion.div>
               ))}
             </div>
-
-            <a
-              href="https://github.com/arjunkacha"
-              target="_blank"
-              className="inline-block mt-6 border border-cyan-400 text-cyan-400 px-5 py-2 rounded-xl hover:bg-cyan-400 hover:text-black transition"
-            >
-              View Project
-            </a>
-
           </motion.div>
-
-          {/* Project 3 */}
-          <motion.div
-            whileHover={{ y: -10, scale: 1.02 }}
-            transition={{ type: "spring", stiffness: 300 }}
-            className="bg-slate-900 border border-slate-800 rounded-3xl p-8 hover:border-cyan-400"
-          >
-
-            <h3 className="text-2xl font-semibold mb-4">
-              Study Planner App
-            </h3>
-
-            <p className="text-slate-400 leading-7">
-              Flutter productivity application designed for task
-              management, progress tracking, and smart study planning.
-            </p>
-
-            <div className="flex flex-wrap gap-2 mt-6">
-              {["Flutter", "Firebase", "Dart"].map((tech) => (
-                <span
-                  key={tech}
-                  className="bg-slate-800 px-3 py-1 rounded-lg text-sm"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-
-            <a
-              href="https://github.com/arjunkacha"
-              target="_blank"
-              className="inline-block mt-6 border border-cyan-400 text-cyan-400 px-5 py-2 rounded-xl hover:bg-cyan-400 hover:text-black transition"
-            >
-              View Project
-            </a>
-
-          </motion.div>
-
         </div>
-
       </section>
 
       {/* Contact Section */}
-      <section
-        id="contact"
-        className="max-w-6xl mx-auto px-6 py-24"
-      >
+      <section id="contact" className="py-32 px-6 bg-[#f8fafc] border-t border-[#e2e8f0]/60">
+        <div className="max-w-3xl mx-auto text-center">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+            className="space-y-12"
+          >
+            <div className="space-y-4">
+              <motion.div variants={fadeInUp} className="text-xs font-bold tracking-wider uppercase text-[#0ea5e9]">
+                Get in Touch
+              </motion.div>
+              <motion.h2 
+                variants={fadeInUp}
+                className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#0f172a]"
+              >
+                Let's Build Something Together
+              </motion.h2>
+              <motion.p 
+                variants={fadeInUp}
+                className="text-sm md:text-base text-[#475569] max-w-xl mx-auto"
+              >
+                I'm always open to discussing new software development initiatives, AI applications, cybersecurity reviews, or Flutter projects.
+              </motion.p>
+            </div>
 
-        <h2 className="text-4xl font-bold mb-12 text-cyan-400">
-          Contact Me
-        </h2>
-
-        <div className="bg-slate-900 border border-slate-800 rounded-3xl p-10">
-
-          <p className="text-slate-300 text-lg leading-8">
-            I’m always open to discussing projects, internships,
-            collaborations, and learning opportunities.
-          </p>
-
-          <div className="flex flex-wrap gap-4 mt-8">
-
-            <a
-              href="https://github.com/arjunkacha"
-              target="_blank"
-              className="bg-cyan-400 text-black px-6 py-3 rounded-xl font-semibold hover:scale-105 transition"
+            {/* Elegant Premium Contact Buttons */}
+            <motion.div 
+              variants={fadeInUp}
+              className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4"
             >
-              GitHub
-            </a>
+              <motion.a
+                href="mailto:arjunkacha@example.com"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#0f172a] text-white rounded-full font-semibold text-sm hover:bg-slate-800 shadow-sm transition-all duration-200"
+                whileHover={{ y: -2 }}
+                whileTap={{ y: 0 }}
+              >
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect width="20" height="16" x="2" y="4" rx="2" />
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                </svg>
+                Email Me
+              </motion.a>
 
-            <a
-              href="https://www.linkedin.com/in/arjun-kacha/"
-              target="_blank"
-              className="border border-cyan-400 text-cyan-400 px-6 py-3 rounded-xl font-semibold hover:bg-cyan-400 hover:text-black transition"
-            >
-              LinkedIn
-            </a>
+              <motion.a
+                href="https://www.linkedin.com/in/arjun-kacha"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white border border-[#e2e8f0] hover:bg-[#f8fafc] text-[#475569] hover:text-[#0f172a] rounded-full font-semibold text-sm shadow-2xs transition-all duration-200"
+                whileHover={{ y: -2 }}
+                whileTap={{ y: 0 }}
+              >
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                  <rect width="4" height="12" x="2" y="9" rx="1" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
+                LinkedIn
+              </motion.a>
 
-          </div>
-
+              <motion.a
+                href="https://github.com/arjunkacha"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white border border-[#e2e8f0] hover:bg-[#f8fafc] text-[#475569] hover:text-[#0f172a] rounded-full font-semibold text-sm shadow-2xs transition-all duration-200"
+                whileHover={{ y: -2 }}
+                whileTap={{ y: 0 }}
+              >
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                  <path d="M9 18c-4.51 2-5-2-7-2" />
+                </svg>
+                GitHub
+              </motion.a>
+            </motion.div>
+          </motion.div>
         </div>
-
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-slate-800 py-8 text-center text-slate-500">
-        © 2026 Arjun Kacha. All Rights Reserved.
+      <footer className="bg-white border-t border-[#e2e8f0] px-6 py-16 text-center">
+        <div className="max-w-4xl mx-auto space-y-3">
+          <p className="text-[#475569] text-sm">Built with React & Tailwind CSS</p>
+          <p className="text-[#475569] text-xs font-medium">© 2026 Arjun Kacha. All rights reserved.</p>
+        </div>
       </footer>
-
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
