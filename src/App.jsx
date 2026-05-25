@@ -9,31 +9,31 @@ function App() {
       title: "ML-Based Intrusion Detection System",
       description: "Advanced machine learning system for detecting network intrusions with high accuracy.",
       tech: ["Python", "TensorFlow", "Machine Learning"],
-      github: "https://github.com/arjunkacha",
+      github: "https://github.com/arjunkacha/ML-Based-IDS.git",
     },
     {
       title: "AI-Powered Resume Screening System",
       description: "Intelligent system that automatically screens and ranks resumes using NLP.",
       tech: ["Python", "NLP", "Flask"],
-      github: "https://github.com/arjunkacha",
+      github: "https://github.com/arjunkacha/AI-Powered-Resume-Screening-System.git",
     },
     {
       title: "Smart Study Planner & Exam Preparation Tracker",
       description: "Adaptive study planning tool with AI-driven exam preparation recommendations.",
       tech: ["React", "Node.js", "MongoDB"],
-      github: "https://github.com/arjunkacha",
+      github: "https://github.com/arjunkacha/Smart-Study-Planner-Exam-Preparation-Tracker-App.git",
     },
     {
       title: "Image Generation using cGAN",
       description: "Conditional Generative Adversarial Network for intelligent image synthesis.",
       tech: ["PyTorch", "GAN", "Python"],
-      github: "https://github.com/arjunkacha",
+      github: "https://github.com/arjunkacha/image-to-image-generation-with-cGAN.git",
     },
     {
       title: "TravelVista",
       description: "Modern travel planning application with real-time recommendations and booking.",
       tech: ["Flutter", "Firebase", "Dart"],
-      github: "https://github.com/arjunkacha",
+      github: "https://github.com/arjunkacha/TravelVista.git",
     },
   ];
 
@@ -63,10 +63,10 @@ function App() {
   // Framer Motion animation configuration
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } 
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
     },
   };
 
@@ -82,7 +82,7 @@ function App() {
 
   return (
     <div className="bg-[#ffffff] text-[#0f172a] min-h-screen font-sans antialiased selection:bg-[#0ea5e9]/10 selection:text-[#0ea5e9]">
-      
+
       {/* Sticky Premium Navbar */}
       <nav className="fixed top-0 w-full bg-[#ffffff]/80 backdrop-blur-md z-50 border-b border-[#e2e8f0]/80 transition-all duration-300">
         <div className="max-w-6xl mx-auto px-6 h-16 flex justify-between items-center">
@@ -141,7 +141,7 @@ function App() {
 
         {/* Mobile Dropdown Menu */}
         {isMobileMenuOpen && (
-          <motion.div 
+          <motion.div
             className="md:hidden bg-white border-b border-[#e2e8f0] px-6 py-6 space-y-4 shadow-lg absolute w-full left-0 top-16"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -186,7 +186,7 @@ function App() {
             </motion.div>
 
             {/* Title */}
-            <motion.h1 
+            <motion.h1
               variants={fadeInUp}
               className="text-5xl md:text-7xl font-extrabold tracking-tight text-[#0f172a]"
             >
@@ -194,7 +194,7 @@ function App() {
             </motion.h1>
 
             {/* Subtitle */}
-            <motion.p 
+            <motion.p
               variants={fadeInUp}
               className="text-lg md:text-xl text-[#0ea5e9] font-semibold tracking-wider uppercase"
             >
@@ -202,7 +202,7 @@ function App() {
             </motion.p>
 
             {/* Description */}
-            <motion.p 
+            <motion.p
               variants={fadeInUp}
               className="text-base md:text-lg text-[#475569] leading-relaxed max-w-2xl mx-auto"
             >
@@ -210,7 +210,7 @@ function App() {
             </motion.p>
 
             {/* CTA Buttons */}
-            <motion.div 
+            <motion.div
               variants={fadeInUp}
               className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4"
             >
@@ -241,7 +241,7 @@ function App() {
           </motion.div>
 
           {/* Minimal scroll down indicator */}
-          <motion.div 
+          <motion.div
             className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:block"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -279,8 +279,8 @@ function App() {
               <motion.div variants={fadeInUp} className="text-xs font-bold tracking-wider uppercase text-[#0ea5e9]">
                 About Me
               </motion.div>
-              <motion.h2 
-                variants={fadeInUp} 
+              <motion.h2
+                variants={fadeInUp}
                 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#0f172a]"
               >
                 IT Student & Software Builder
@@ -297,7 +297,7 @@ function App() {
               </motion.p>
 
               {/* Minimalist Bento-style Highlights */}
-              <motion.div 
+              <motion.div
                 variants={fadeInUp}
                 className="grid grid-cols-2 gap-4 pt-6"
               >
@@ -337,13 +337,13 @@ function App() {
               <motion.div variants={fadeInUp} className="text-xs font-bold tracking-wider uppercase text-[#0ea5e9]">
                 Expertise
               </motion.div>
-              <motion.h2 
+              <motion.h2
                 variants={fadeInUp}
                 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#0f172a]"
               >
                 Skills & Technologies
               </motion.h2>
-              <motion.p 
+              <motion.p
                 variants={fadeInUp}
                 className="text-sm md:text-base text-[#475569]"
               >
@@ -394,13 +394,13 @@ function App() {
               <motion.div variants={fadeInUp} className="text-xs font-bold tracking-wider uppercase text-[#0ea5e9]">
                 Featured Works
               </motion.div>
-              <motion.h2 
+              <motion.h2
                 variants={fadeInUp}
                 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#0f172a]"
               >
                 Projects
               </motion.h2>
-              <motion.p 
+              <motion.p
                 variants={fadeInUp}
                 className="text-sm md:text-base text-[#475569]"
               >
@@ -422,7 +422,7 @@ function App() {
                         <span className="text-[10px] font-bold text-[#0ea5e9] tracking-wider uppercase">Project 0{idx + 1}</span>
                         <h3 className="text-xl md:text-2xl font-bold text-[#0f172a]">{project.title}</h3>
                       </div>
-                      
+
                       <p className="text-sm md:text-base text-[#475569] leading-relaxed">
                         {project.description}
                       </p>
@@ -475,13 +475,13 @@ function App() {
               <motion.div variants={fadeInUp} className="text-xs font-bold tracking-wider uppercase text-[#0ea5e9]">
                 Get in Touch
               </motion.div>
-              <motion.h2 
+              <motion.h2
                 variants={fadeInUp}
                 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#0f172a]"
               >
                 Let's Build Something Together
               </motion.h2>
-              <motion.p 
+              <motion.p
                 variants={fadeInUp}
                 className="text-sm md:text-base text-[#475569] max-w-xl mx-auto"
               >
@@ -490,7 +490,7 @@ function App() {
             </div>
 
             {/* Elegant Premium Contact Buttons */}
-            <motion.div 
+            <motion.div
               variants={fadeInUp}
               className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4"
             >
