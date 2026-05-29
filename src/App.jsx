@@ -229,16 +229,20 @@ function App() {
             variants={stagger}
             className="flex flex-col items-center space-y-6"
           >
-            {/* Circular Profile Photo: Chest-Up dynamic CSS zoom of original image */}
+            {/* Premium Circular Profile Photo Container */}
             <motion.div 
               variants={fadeIn}
-              className="w-44 h-44 md:w-48 md:h-48 rounded-full overflow-hidden border border-[#E2E8F0] shadow-[0_8px_30px_rgba(15,23,42,0.03)] bg-white shrink-0 relative"
+              className="w-44 h-44 md:w-60 md:h-60 rounded-full bg-white border border-[#E2E8F0] shadow-[0_12px_35px_rgba(15,23,42,0.06)] p-2 shrink-0 relative group"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
             >
-              <img
-                src="/profile.png"
-                alt="Arjun Kacha"
-                className="w-full h-full object-cover object-[center_15%] scale-[2.1] origin-[center_15%] transition-transform duration-500 hover:scale-[2.2]"
-              />
+              <div className="w-full h-full rounded-full overflow-hidden bg-slate-50 relative">
+                <img
+                  src="/profile.png"
+                  alt="Arjun Kacha"
+                  className="w-full h-full object-cover object-[center_15%] scale-[2.1] origin-[center_15%] transition-transform duration-500 group-hover:scale-[2.2]"
+                />
+              </div>
             </motion.div>
 
             {/* Name */}
