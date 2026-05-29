@@ -18,85 +18,106 @@ function App() {
   }, []);
 
   const stats = [
-    { value: "15+", label: "Projects Completed" },
-    { value: "4", label: "Internships Completed" },
-    { value: "10+", label: "Certifications" },
-    { value: "2027", label: "B.Tech IT Graduate" },
+    { value: "15+", label: "Projects Built", desc: "Machine Learning, AI, & Analytics platforms" },
+    { value: "4", label: "Internships Completed", desc: "Hands-on engineering experience" },
+    { value: "5", label: "Top Certifications Earned", desc: "AWS, IBM, & DataCamp validations" },
+    { value: "2027", label: "Expected Graduation", desc: "B.Tech IT Candidate at CHARUSAT" },
   ];
 
   const skillsData = [
     {
       category: "Programming",
-      description: "Clean, performant, and object-oriented development.",
       items: ["Python", "Java", "JavaScript", "Dart"],
     },
     {
-      category: "AI & Machine Learning",
-      description: "Building models that recognize patterns and predict outcomes.",
+      category: "Artificial Intelligence",
       items: ["Machine Learning", "Deep Learning", "NLP", "Generative AI"],
     },
     {
       category: "Data Analytics",
-      description: "Extracting insights and telling stories with data.",
-      items: ["Pandas", "NumPy", "Matplotlib", "Excel", "Power BI (Learning)"],
+      items: ["Pandas", "NumPy", "Matplotlib", "Data Visualization", "Excel", "Power BI"],
+    },
+    {
+      category: "Cloud & DevOps",
+      items: ["AWS", "Docker", "Kubernetes", "OpenShift"],
     },
     {
       category: "Cybersecurity",
-      description: "Securing systems, analyzing threats, and enforcing integrity.",
       items: ["Network Security", "Threat Detection", "Intrusion Detection"],
     },
     {
-      category: "Cloud & Tools",
-      description: "Modern environments and industry-standard workflows.",
-      items: ["AWS", "Git", "GitHub", "VS Code"],
+      category: "Tools",
+      items: ["Git", "GitHub", "VS Code"],
     },
   ];
 
   const catalogProjects = [
     {
-      title: "ML-Based Intrusion Detection System",
-      description: "Advanced machine learning system designed to analyze live network packages, classify traffic, and flag suspicious intrusion activities in real-time.",
-      tech: ["Python", "TensorFlow", "Machine Learning", "Network Security"],
-      github: "https://github.com/arjunkacha/ML-Based-IDS.git",
-    },
-    {
       title: "AI-Powered Resume Screening System",
-      description: "An automated intelligent parser that scans candidate resumes, extracts core capabilities, and ranks them against job requirements using natural language processing (NLP).",
-      tech: ["Python", "NLP", "Flask", "Text Analytics"],
+      category: "AI Project",
+      description: "An automated intelligent parser that scans candidate resumes, extracts core capabilities, and ranks them against job requirements using NLP models.",
+      tech: ["Python", "NLP", "Flask", "Text Analysis"],
       github: "https://github.com/arjunkacha/AI-Powered-Resume-Screening-System.git",
     },
     {
       title: "Smart Study Planner & Exam Preparation Tracker",
-      description: "An adaptive scheduler and student assistance platform that personalizes revision guides and monitors exam readiness based on previous mock performances.",
+      category: "AI Project",
+      description: "An adaptive student scheduler and learning tracker that personalizes study guides and reviews exam readiness based on performance diagnostics.",
       tech: ["React", "Node.js", "MongoDB", "Express"],
       github: "https://github.com/arjunkacha/Smart-Study-Planner-Exam-Preparation-Tracker-App.git",
     },
     {
       title: "Image Generation using cGAN",
-      description: "An intelligent generative deep learning system using Conditional Generative Adversarial Networks (cGAN) to synthesize rich images based on specified attributes.",
+      category: "Machine Learning Project",
+      description: "A generative deep learning system using Conditional Generative Adversarial Networks (cGAN) to synthesize rich images based on specified semantic vectors.",
       tech: ["PyTorch", "GAN", "Python", "Computer Vision"],
       github: "https://github.com/arjunkacha/image-to-image-generation-with-cGAN.git",
     },
     {
       title: "TravelVista",
-      description: "A premium mobile travel planner featuring intuitive UI components, real-time travel alerts, custom itinerary routing, and seamless secure cloud synchronization.",
+      category: "Data Analytics Project",
+      description: "A premium travel planning platform featuring rich data recommendation components, dynamic routing, itinerary synthesis, and real-time database synchronization.",
       tech: ["Flutter", "Dart", "Firebase", "State Management"],
       github: "https://github.com/arjunkacha/TravelVista.git",
     },
   ];
 
   const certifications = [
-    "AWS Cloud Practitioner Essentials",
-    "AWS Academy Graduate – Cloud Developing",
-    "Flutter & Dart Mobile App Development",
-    "Blockchain Foundation Program",
+    {
+      name: "Machine Learning Scientist in Python",
+      authority: "DataCamp",
+      hours: "85-hour career track",
+      skillArea: "Machine Learning & AI"
+    },
+    {
+      name: "AWS Academy Graduate – Cloud Developing",
+      authority: "AWS Academy",
+      hours: "40-hour program",
+      skillArea: "Cloud Computing"
+    },
+    {
+      name: "Machine Learning with Python",
+      authority: "IBM Coursera",
+      skillArea: "Machine Learning"
+    },
+    {
+      name: "Flutter and Dart: Developing iOS, Android, and Mobile Apps",
+      authority: "IBM",
+      skillArea: "Mobile Development"
+    },
+    {
+      name: "Introduction to Containers with Docker, Kubernetes & OpenShift",
+      authority: "IBM",
+      skillArea: "Cloud & DevOps"
+    }
   ];
 
   const currentFocus = [
-    { title: "Artificial Intelligence", desc: "Developing intelligent agents and generative frameworks." },
-    { title: "Data Analytics", desc: "Synthesizing complex data streams into clean actionable narratives." },
-    { title: "Cybersecurity", desc: "Automating security intelligence, intrusion scanning, and defensive systems." },
-    { title: "Cloud Computing", desc: "Architecting serverless, highly-available cloud infrastructures." },
+    { title: "Artificial Intelligence", subtitle: "Deep Models", desc: "Developing generative models and predictive architectures." },
+    { title: "Data Analytics", subtitle: "Insight Mining", desc: "Synthesizing unstructured complex data into actionable logic." },
+    { title: "Cybersecurity", subtitle: "SecOps Intelligence", desc: "Automating security compliance and machine-learned log scanning." },
+    { title: "Cloud Computing", subtitle: "Infrastructure", desc: "Architecting serverless, highly-resilient distributed architectures." },
+    { title: "Generative AI", subtitle: "Next-Gen LLMs", desc: "Fine-tuning weights, prompt orchestration, and vector data models." },
   ];
 
   const fadeIn = {
@@ -119,10 +140,10 @@ function App() {
   return (
     <div className="bg-white text-[#0F172A] font-sans antialiased selection:bg-[#0EA5E9]/10 selection:text-[#0EA5E9] min-h-screen">
       
-      {/* 1. Header / Navigation */}
+      {/* 1. Sticky Glassmorphism Navbar */}
       <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         scrolled 
-          ? "bg-white/85 backdrop-blur-md border-b border-[#F1F5F9]/80 py-3 shadow-[0_2px_20px_rgba(0,0,0,0.01)]" 
+          ? "bg-white/80 backdrop-blur-md border-b border-[#E2E8F0]/80 py-3 shadow-[0_4px_30px_rgba(0,0,0,0.015)]" 
           : "bg-transparent py-5"
       }`}>
         <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
@@ -133,7 +154,7 @@ function App() {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-10">
-            {["About", "Skills", "Projects", "Contact"].map((item) => (
+            {["About", "Skills", "Projects", "Certifications", "Contact"].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
@@ -143,10 +164,11 @@ function App() {
               </a>
             ))}
             <a
-              href="#contact"
-              className="inline-flex items-center justify-center px-4 py-1.5 text-xs font-semibold text-white bg-[#0F172A] rounded-full hover:bg-slate-800 transition-all duration-200"
+              href="/resume.pdf"
+              download
+              className="inline-flex items-center justify-center px-4 py-1.5 text-xs font-semibold text-[#0F172A] border border-[#E2E8F0] hover:border-[#CBD5E1] rounded-full hover:bg-slate-50 transition-all duration-200"
             >
-              Connect
+              Download Resume
             </a>
           </div>
 
@@ -175,22 +197,23 @@ function App() {
             transition={{ duration: 0.2 }}
           >
             <div className="flex flex-col gap-5">
-              {["About", "Skills", "Projects", "Contact"].map((item) => (
+              {["About", "Skills", "Projects", "Certifications", "Contact"].map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-base font-medium text-[#475569] hover:text-[#0EA5E9]"
+                  className="text-base font-medium text-[#475569] hover:text-[#0ea5e9]"
                 >
                   {item}
                 </a>
               ))}
               <a
-                href="#contact"
+                href="/resume.pdf"
+                download
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="inline-flex items-center justify-center w-full px-5 py-3 text-sm font-semibold text-white bg-[#0F172A] rounded-full hover:bg-slate-800"
+                className="inline-flex items-center justify-center w-full px-5 py-3 text-sm font-semibold text-[#0F172A] border border-[#E2E8F0] rounded-full hover:bg-slate-50"
               >
-                Connect
+                Download Resume
               </a>
             </div>
           </motion.div>
@@ -198,7 +221,7 @@ function App() {
       </nav>
 
       {/* 2. Hero Section */}
-      <section className="relative pt-28 pb-20 md:pt-40 md:pb-28 px-6 overflow-hidden bg-gradient-to-b from-[#FFFFFF] to-[#F8FAFC]">
+      <section className="relative pt-36 pb-20 md:pt-48 md:pb-28 px-6 overflow-hidden bg-white">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div 
             initial="hidden"
@@ -206,22 +229,22 @@ function App() {
             variants={stagger}
             className="flex flex-col items-center space-y-6"
           >
-            {/* Profile Photo - Large (160px–220px), Circular, subtle shadow, clean border */}
+            {/* Circular Profile Photo: Chest-Up dynamic CSS zoom of original image */}
             <motion.div 
               variants={fadeIn}
-              className="w-44 h-44 md:w-48 md:h-48 rounded-full overflow-hidden border border-[#E2E8F0] shadow-[0_8px_30px_rgba(15,23,42,0.03)] bg-white relative group shrink-0"
+              className="w-44 h-44 md:w-48 md:h-48 rounded-full overflow-hidden border border-[#E2E8F0] shadow-[0_8px_30px_rgba(15,23,42,0.03)] bg-white shrink-0 relative"
             >
               <img
                 src="/profile.png"
                 alt="Arjun Kacha"
-                className="w-full h-full object-cover object-center scale-[1.01] transition-transform duration-500 group-hover:scale-105"
+                className="w-full h-full object-cover object-[center_15%] scale-[2.1] origin-[center_15%] transition-transform duration-500 hover:scale-[2.2]"
               />
             </motion.div>
 
             {/* Name */}
             <motion.h1 
               variants={fadeIn}
-              className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#0F172A]"
+              className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#0F172A] leading-tight"
             >
               Arjun Kacha
             </motion.h1>
@@ -229,18 +252,10 @@ function App() {
             {/* Headline */}
             <motion.p 
               variants={fadeIn}
-              className="text-lg sm:text-xl md:text-2xl font-semibold text-[#0ea5e9] tracking-tight max-w-2xl"
+              className="text-xl sm:text-2xl font-semibold text-[#0ea5e9] tracking-tight max-w-2xl"
             >
               Aspiring AI & Data Analytics Professional
             </motion.p>
-
-            {/* Tagline / Subtitle */}
-            <motion.div 
-              variants={fadeIn} 
-              className="inline-flex items-center gap-2 px-4 py-1.5 bg-white border border-[#E2E8F0] rounded-full shadow-[0_1px_2px_rgba(0,0,0,0.01)] text-xs font-bold text-[#475569] tracking-wide uppercase"
-            >
-              AI • Data Analytics • Cybersecurity
-            </motion.div>
 
             {/* Description */}
             <motion.p 
@@ -276,14 +291,14 @@ function App() {
         </div>
       </section>
 
-      {/* 3. Stats Dashboard Section */}
-      <section className="py-12 bg-white border-y border-[#F1F5F9]">
+      {/* 3. Apple Bento-style Stats Dashboard Section */}
+      <section className="py-20 bg-[#F8FAFC] border-y border-[#E2E8F0]/80">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {stats.map((stat, i) => (
               <motion.div 
                 key={i} 
-                className="text-center md:text-left space-y-1.5"
+                className="bg-white rounded-[24px] p-6 border border-[#E2E8F0] shadow-[0_2px_15px_rgba(0,0,0,0.01)] flex flex-col justify-between space-y-4 hover:shadow-[0_4px_20px_rgba(0,0,0,0.02)] transition-shadow duration-300"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
@@ -292,8 +307,9 @@ function App() {
                 <div className="text-4xl md:text-5xl font-extrabold tracking-tighter text-[#0F172A]">
                   {stat.value}
                 </div>
-                <div className="text-xs font-semibold text-[#475569] uppercase tracking-wider">
-                  {stat.label}
+                <div className="space-y-1">
+                  <div className="text-sm font-bold text-[#0F172A]">{stat.label}</div>
+                  <div className="text-xs text-[#475569] font-normal leading-normal">{stat.desc}</div>
                 </div>
               </motion.div>
             ))}
@@ -302,7 +318,7 @@ function App() {
       </section>
 
       {/* 4. About Section */}
-      <section id="about" className="py-24 md:py-36 px-6 bg-[#F8FAFC]">
+      <section id="about" className="py-24 md:py-32 px-6 bg-white">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial="hidden"
@@ -313,35 +329,34 @@ function App() {
           >
             <div className="space-y-3">
               <motion.span variants={fadeIn} className="text-xs font-bold text-[#0EA5E9] uppercase tracking-widest">
-                Overview
+                Background
               </motion.span>
               <motion.h2 variants={fadeIn} className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#0F172A]">
-                About Arjun Kacha
+                About Me
               </motion.h2>
             </div>
 
-            {/* Apple style full-width presentation card */}
+            {/* Apple style full-width overview card */}
             <motion.div 
               variants={fadeIn}
-              className="bg-white rounded-[32px] p-8 md:p-14 border border-[#E2E8F0] shadow-[0_10px_35px_rgba(0,0,0,0.015)] space-y-8"
+              className="bg-[#F8FAFC] rounded-[32px] p-8 md:p-14 border border-[#E2E8F0] shadow-[0_4px_25px_rgba(0,0,0,0.01)] space-y-8"
             >
               <p className="text-lg md:text-[21px] text-[#475569] leading-relaxed font-light">
-                An <strong className="font-semibold text-[#0F172A]">Information Technology</strong> student at <strong className="font-semibold text-[#0F172A]">CHARUSAT</strong> with deep-rooted interests in Artificial Intelligence, Data Analytics, Cybersecurity, and Cloud Computing.
+                I'm an <strong className="font-semibold text-[#0F172A]">Information Technology</strong> student at <strong className="font-semibold text-[#0F172A]">CHARUSAT</strong> with solid training in Artificial Intelligence, Data Analytics, Cloud Development, and secure mobile application design.
               </p>
               
-              <div className="h-[1px] bg-[#F1F5F9]"></div>
+              <div className="h-[1px] bg-[#E2E8F0]/60"></div>
 
-              <p className="text-base md:text-lg text-[#475569] leading-relaxed">
-                Passionate about building practical software solutions and leveraging data-driven technologies to solve real-world challenges. Whether architecting security intrusion neural engines or optimizing pipeline parameters, my goal is to deliver clean, secure, and state-of-the-art products.
+              <p className="text-base md:text-lg text-[#475569] leading-relaxed font-normal">
+                Combining a rigorous IT academic foundation with extensive professional certifications—including <strong className="font-semibold text-[#0F172A]">DataCamp Machine Learning Science</strong> and <strong className="font-semibold text-[#0F172A]">AWS Cloud Developing</strong> pipelines—I specialize in translating predictive algorithms into robust cloud setups. With expertise in containerized services via <strong className="font-semibold text-[#0F172A]">Docker & Kubernetes</strong>, secure native <strong className="font-semibold text-[#0F172A]">Flutter Mobile</strong> engineering, and structural log threat diagnostics, I engineer solutions designed to scale, solve real-world problems, and perform.
               </p>
 
-              {/* Minimal specs block */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-                <div className="flex items-center gap-3 bg-[#F8FAFC] rounded-2xl p-4 border border-[#F1F5F9]">
+                <div className="flex items-center gap-3 bg-white rounded-2xl p-4 border border-[#E2E8F0]">
                   <span className="w-2.5 h-2.5 rounded-full bg-[#0EA5E9]"></span>
                   <span className="text-sm font-semibold text-[#0F172A]">B.Tech IT Candidate (2027)</span>
                 </div>
-                <div className="flex items-center gap-3 bg-[#F8FAFC] rounded-2xl p-4 border border-[#F1F5F9]">
+                <div className="flex items-center gap-3 bg-white rounded-2xl p-4 border border-[#E2E8F0]">
                   <span className="w-2.5 h-2.5 rounded-full bg-[#0ea5e9]"></span>
                   <span className="text-sm font-semibold text-[#0F172A]">Charotar University (CHARUSAT)</span>
                 </div>
@@ -351,120 +366,8 @@ function App() {
         </div>
       </section>
 
-      {/* 5. Featured Project Spotlight (ML-IDS) */}
-      <section className="py-24 md:py-36 px-6 bg-white">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={stagger}
-            className="space-y-16"
-          >
-            <div className="text-center space-y-3">
-              <motion.span variants={fadeIn} className="text-xs font-bold text-[#0EA5E9] uppercase tracking-widest">
-                Flagship System
-              </motion.span>
-              <motion.h2 variants={fadeIn} className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#0F172A]">
-                Featured Release
-              </motion.h2>
-            </div>
-
-            {/* Apple Product Card Layout */}
-            <motion.div 
-              variants={fadeIn}
-              className="bg-[#F8FAFC] rounded-[36px] border border-[#E2E8F0] overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.01)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.02)] transition-all duration-300"
-            >
-              <div className="grid md:grid-cols-12 items-center">
-                {/* Product Text */}
-                <div className="p-8 sm:p-12 md:p-16 md:col-span-7 space-y-6">
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white border border-[#E2E8F0] rounded-full">
-                    <span className="w-2 h-2 rounded-full bg-[#0ea5e9]"></span>
-                    <span className="text-[10px] font-bold text-[#475569] uppercase tracking-widest">Intrusion Engine</span>
-                  </div>
-
-                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0F172A] tracking-tight leading-tight">
-                    ML-Based Intrusion Detection System
-                  </h3>
-
-                  <p className="text-base text-[#475569] leading-relaxed">
-                    A machine learning-based system designed for detecting and classifying suspicious network activities. By scanning massive dataset packets, it targets vulnerabilities, discovers anomalies, and triggers automatic intrusion classification models.
-                  </p>
-
-                  {/* Core specs list */}
-                  <div className="space-y-3 pt-2">
-                    {[
-                      "Designed for real-time traffic scanning and packet categorization.",
-                      "Powered by deep models for multi-class attack classification.",
-                      "Stops suspicious requests dynamically at boundary layers."
-                    ].map((item, i) => (
-                      <div key={i} className="flex items-start gap-2.5 text-sm text-[#475569]">
-                        <svg className="w-5 h-5 text-[#0ea5e9] shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                        </svg>
-                        <span>{item}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Technologies */}
-                  <div className="flex flex-wrap gap-2 pt-2">
-                    {["Python", "TensorFlow", "Machine Learning", "Network Security"].map((t, i) => (
-                      <span key={i} className="px-3 py-1 bg-white border border-[#E2E8F0] text-xs font-semibold rounded-lg text-[#475569]">
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* GitHub CTA Button Only */}
-                  <div className="pt-4">
-                    <a
-                      href="https://github.com/arjunkacha/ML-Based-IDS.git"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-6 py-2.5 bg-white border border-[#E2E8F0] hover:border-[#CBD5E1] text-[#475569] hover:text-[#0F172A] rounded-full text-xs font-bold transition-all duration-200"
-                    >
-                      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                        <path d="M9 18c-4.51 2-5-2-7-2" />
-                      </svg>
-                      <span>Repository on GitHub</span>
-                    </a>
-                  </div>
-                </div>
-
-                {/* Aesthetic Visual specifications sidebar */}
-                <div className="bg-[#0F172A] md:col-span-5 h-full min-h-[300px] flex flex-col justify-center p-8 sm:p-12 text-white border-t md:border-t-0 md:border-l border-slate-800">
-                  <div className="space-y-6">
-                    <div className="text-[#0ea5e9] text-xs font-extrabold uppercase tracking-widest">
-                      Specifications
-                    </div>
-                    
-                    <div className="space-y-4">
-                      <div className="pb-4 border-b border-slate-800">
-                        <div className="text-[11px] text-slate-400 font-bold uppercase tracking-wider">Classification</div>
-                        <div className="text-lg font-semibold text-slate-100">Intrusion Anomalies</div>
-                      </div>
-                      <div className="pb-4 border-b border-slate-800">
-                        <div className="text-[11px] text-slate-400 font-bold uppercase tracking-wider">Neural Platform</div>
-                        <div className="text-lg font-semibold text-slate-100">TensorFlow Ecosystem</div>
-                      </div>
-                      <div>
-                        <div className="text-[11px] text-slate-400 font-bold uppercase tracking-wider">Implementation</div>
-                        <div className="text-lg font-semibold text-slate-100">Python Neural Pipelines</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* 6. Refined Skills Grid Section */}
-      <section id="skills" className="py-24 md:py-36 px-6 bg-[#F8FAFC]">
+      {/* 5. Skills Section */}
+      <section id="skills" className="py-24 md:py-32 px-6 bg-[#F8FAFC] border-y border-[#E2E8F0]/80">
         <div className="max-w-5xl mx-auto">
           <motion.div
             initial="hidden"
@@ -486,21 +389,20 @@ function App() {
               {skillsData.map((skillGroup, idx) => (
                 <motion.div
                   key={idx}
-                  className="bg-white rounded-[24px] p-7 border border-[#E2E8F0] shadow-[0_4px_25px_rgba(0,0,0,0.01)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.02)] hover:border-[#CBD5E1] transition-all duration-300 flex flex-col justify-between"
+                  className="bg-white rounded-[24px] p-7 border border-[#E2E8F0] shadow-[0_4px_25px_rgba(0,0,0,0.01)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.02)] transition-all duration-300 flex flex-col justify-between"
                   variants={fadeIn}
                   whileHover={{ y: -3 }}
                 >
                   <div className="space-y-4">
-                    <div className="h-2 w-8 bg-[#0EA5E9] rounded-full"></div>
+                    <div className="h-1.5 w-8 bg-[#0EA5E9] rounded-full"></div>
                     <h3 className="text-lg font-extrabold text-[#0F172A] tracking-tight">{skillGroup.category}</h3>
-                    <p className="text-xs text-[#475569] leading-relaxed font-normal">{skillGroup.description}</p>
                   </div>
 
                   <div className="flex flex-wrap gap-2 pt-6">
                     {skillGroup.items.map((skill, i) => (
                       <span
                         key={i}
-                        className="px-2.5 py-1 bg-[#F8FAFC] text-[#475569] text-xs font-semibold rounded-lg border border-[#E2E8F0] transition-colors"
+                        className="px-3 py-1 bg-[#F8FAFC] text-[#475569] text-xs font-bold rounded-lg border border-[#E2E8F0]"
                       >
                         {skill}
                       </span>
@@ -513,8 +415,8 @@ function App() {
         </div>
       </section>
 
-      {/* 7. General Projects Catalog */}
-      <section id="projects" className="py-24 md:py-36 px-6 bg-white">
+      {/* 6. Featured Project Spotlight (ML-IDS) */}
+      <section className="py-24 md:py-32 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
           <motion.div
             initial="hidden"
@@ -525,7 +427,102 @@ function App() {
           >
             <div className="text-center space-y-3">
               <motion.span variants={fadeIn} className="text-xs font-bold text-[#0EA5E9] uppercase tracking-widest">
-                Works Portfolio
+                Flagship Project
+              </motion.span>
+              <motion.h2 variants={fadeIn} className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#0F172A]">
+                Featured Release
+              </motion.h2>
+            </div>
+
+            {/* Apple Product Card Layout */}
+            <motion.div 
+              variants={fadeIn}
+              className="bg-[#F8FAFC] rounded-[36px] border border-[#E2E8F0] overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.015)]"
+            >
+              <div className="grid md:grid-cols-12 items-center">
+                {/* Product Text */}
+                <div className="p-8 sm:p-12 md:p-16 md:col-span-7 space-y-6">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white border border-[#E2E8F0] rounded-full">
+                    <span className="w-2 h-2 rounded-full bg-[#0ea5e9]"></span>
+                    <span className="text-[10px] font-bold text-[#475569] uppercase tracking-widest">Intrusion Engine</span>
+                  </div>
+
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0F172A] tracking-tight leading-tight">
+                    ML-Based Intrusion Detection System
+                  </h3>
+
+                  <p className="text-base text-[#475569] leading-relaxed">
+                    Machine learning-based system for identifying and classifying suspicious network activities. Automatically inspects incoming network streams, detects anomalies, and classifies them into structured threat definitions with high precision.
+                  </p>
+
+                  <div className="flex flex-wrap gap-2 pt-2">
+                    {["Python", "Machine Learning", "Cybersecurity"].map((t, i) => (
+                      <span key={i} className="px-3 py-1 bg-white border border-[#E2E8F0] text-xs font-bold rounded-lg text-[#475569]">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* GitHub CTA Button Only */}
+                  <div className="pt-4">
+                    <a
+                      href="https://github.com/arjunkacha/ML-Based-IDS.git"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#0F172A] text-white hover:bg-slate-800 rounded-full text-xs font-bold transition-all duration-200"
+                    >
+                      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                        <path d="M9 18c-4.51 2-5-2-7-2" />
+                      </svg>
+                      <span>GitHub Repository</span>
+                    </a>
+                  </div>
+                </div>
+
+                {/* Specs sidebar */}
+                <div className="bg-[#0F172A] md:col-span-5 h-full min-h-[300px] flex flex-col justify-center p-8 sm:p-12 text-white border-t md:border-t-0 md:border-l border-slate-800">
+                  <div className="space-y-6">
+                    <div className="text-[#0ea5e9] text-xs font-extrabold uppercase tracking-widest">
+                      Specifications
+                    </div>
+                    
+                    <div className="space-y-4">
+                      <div className="pb-4 border-b border-slate-800">
+                        <div className="text-[11px] text-slate-400 font-bold uppercase tracking-wider">Focus Area</div>
+                        <div className="text-lg font-semibold text-slate-100">Cybersecurity</div>
+                      </div>
+                      <div className="pb-4 border-b border-slate-800">
+                        <div className="text-[11px] text-slate-400 font-bold uppercase tracking-wider">Classification</div>
+                        <div className="text-lg font-semibold text-slate-100">Intrusion Anomaly Models</div>
+                      </div>
+                      <div>
+                        <div className="text-[11px] text-slate-400 font-bold uppercase tracking-wider">Language</div>
+                        <div className="text-lg font-semibold text-slate-100">Python Integration</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* 7. General Projects Grid Section */}
+      <section id="projects" className="py-24 md:py-32 px-6 bg-[#F8FAFC] border-y border-[#E2E8F0]/85">
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={stagger}
+            className="space-y-16"
+          >
+            <div className="text-center space-y-3">
+              <motion.span variants={fadeIn} className="text-xs font-bold text-[#0EA5E9] uppercase tracking-widest">
+                Works
               </motion.span>
               <motion.h2 variants={fadeIn} className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#0F172A]">
                 Engineering Projects
@@ -536,27 +533,32 @@ function App() {
               {catalogProjects.map((project, idx) => (
                 <motion.div
                   key={idx}
-                  className="bg-white rounded-[28px] p-7 md:p-9 border border-[#E2E8F0] shadow-[0_5px_20px_rgba(0,0,0,0.01)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.025)] transition-all duration-300 flex flex-col justify-between"
+                  className="bg-white rounded-[28px] p-8 md:p-9 border border-[#E2E8F0] shadow-[0_4px_20px_rgba(0,0,0,0.01)] hover:shadow-[0_12px_45px_rgba(0,0,0,0.025)] transition-all duration-300 flex flex-col justify-between"
                   variants={fadeIn}
                   whileHover={{ y: -4 }}
                 >
                   <div className="space-y-4">
-                    <span className="text-[10px] font-bold text-[#0EA5E9] uppercase tracking-wider">Project 0{idx + 1}</span>
+                    <div className="flex justify-between items-center">
+                      <span className="text-[10px] font-bold text-[#0EA5E9] uppercase tracking-wider">Project 0{idx + 1}</span>
+                      <span className="px-2.5 py-0.5 bg-[#F8FAFC] border border-[#E2E8F0] text-[10px] font-bold text-[#475569] rounded-full uppercase tracking-wider">
+                        {project.category}
+                      </span>
+                    </div>
                     <h3 className="text-xl font-extrabold text-[#0F172A] tracking-tight">{project.title}</h3>
                     <p className="text-sm text-[#475569] leading-relaxed font-normal">{project.description}</p>
                   </div>
 
-                  <div className="space-y-6 pt-6">
+                  <div className="space-y-6 pt-8">
                     {/* Tech Chips */}
                     <div className="flex flex-wrap gap-1.5">
                       {project.tech.map((t, i) => (
-                        <span key={i} className="px-2 py-0.5 bg-[#F8FAFC] text-[#475569] text-[11px] font-semibold rounded-md border border-[#E2E8F0]">
+                        <span key={i} className="px-2.5 py-0.5 bg-[#F8FAFC] text-[#475569] text-[11px] font-bold rounded-md border border-[#E2E8F0]">
                           {t}
                         </span>
                       ))}
                     </div>
 
-                    <div className="h-[1px] bg-[#F1F5F9]"></div>
+                    <div className="h-[1px] bg-[#E2E8F0]/60"></div>
 
                     {/* GitHub Button Only */}
                     <div>
@@ -564,7 +566,7 @@ function App() {
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-4 py-2 bg-white border border-[#E2E8F0] hover:border-[#CBD5E1] text-[#475569] hover:text-[#0F172A] rounded-full text-xs font-bold transition-all duration-200"
+                        className="inline-flex items-center gap-1.5 px-4.5 py-2.5 bg-white border border-[#E2E8F0] hover:border-[#CBD5E1] text-[#475569] hover:text-[#0F172A] rounded-full text-xs font-bold transition-all duration-200"
                       >
                         <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                           <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
@@ -581,76 +583,93 @@ function App() {
         </div>
       </section>
 
-      {/* 8. Certifications & Current Focus Dashboard */}
-      <section className="py-24 md:py-36 px-6 bg-[#F8FAFC]">
+      {/* 8. Certifications Section */}
+      <section id="certifications" className="py-24 md:py-32 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8 items-start">
-            
-            {/* Certifications Block */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={stagger}
-              className="space-y-6"
-            >
-              <div className="space-y-2">
-                <span className="text-xs font-bold text-[#0EA5E9] uppercase tracking-widest">Credentials</span>
-                <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight text-[#0F172A]">
-                  Certifications
-                </h2>
-              </div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={stagger}
+            className="space-y-16"
+          >
+            <div className="text-center space-y-3">
+              <motion.span variants={fadeIn} className="text-xs font-bold text-[#0EA5E9] uppercase tracking-widest">
+                Credentials
+              </motion.span>
+              <motion.h2 variants={fadeIn} className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#0F172A]">
+                Certifications
+              </motion.h2>
+            </div>
 
-              <div className="bg-white rounded-[28px] p-6 md:p-8 border border-[#E2E8F0] shadow-[0_4px_20px_rgba(0,0,0,0.01)] space-y-4">
-                {certifications.map((cert, i) => (
-                  <motion.div 
-                    key={i} 
-                    className="flex gap-3.5 items-start py-3 border-b border-[#F1F5F9] last:border-b-0"
-                    variants={fadeIn}
-                  >
-                    <svg className="w-5.5 h-5.5 text-[#0EA5E9] shrink-0" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
+            <div className="grid sm:grid-cols-2 gap-6">
+              {certifications.map((cert, i) => (
+                <motion.div 
+                  key={i} 
+                  className="bg-[#F8FAFC] rounded-[24px] p-6 border border-[#E2E8F0] shadow-[0_2px_15px_rgba(0,0,0,0.005)] flex items-start gap-4 hover:shadow-[0_4px_20px_rgba(0,0,0,0.015)] transition-shadow duration-300"
+                  variants={fadeIn}
+                >
+                  <div className="p-2.5 bg-white border border-[#E2E8F0] rounded-xl shrink-0">
+                    <svg className="w-5.5 h-5.5 text-[#0EA5E9]" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
                     </svg>
-                    <div className="text-sm font-semibold text-[#0F172A] leading-snug">{cert}</div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Current Focus Block */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={stagger}
-              className="space-y-6"
-            >
-              <div className="space-y-2">
-                <span className="text-xs font-bold text-[#0EA5E9] uppercase tracking-widest">Radar</span>
-                <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight text-[#0F172A]">
-                  Currently Exploring
-                </h2>
-              </div>
-
-              <div className="bg-white rounded-[28px] p-6 md:p-8 border border-[#E2E8F0] shadow-[0_4px_20px_rgba(0,0,0,0.01)] space-y-4">
-                {currentFocus.map((focus, i) => (
-                  <motion.div 
-                    key={i} 
-                    className="py-3.5 border-b border-[#F1F5F9] last:border-b-0 space-y-1"
-                    variants={fadeIn}
-                  >
-                    <div className="text-sm font-extrabold text-[#0F172A] tracking-tight">{focus.title}</div>
-                    <div className="text-xs text-[#475569] leading-relaxed font-normal">{focus.desc}</div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-
-          </div>
+                  </div>
+                  <div className="space-y-2 flex-1">
+                    <div className="space-y-1">
+                      <h3 className="text-base font-extrabold text-[#0F172A] tracking-tight leading-snug">{cert.name}</h3>
+                      <p className="text-xs text-[#475569] font-semibold">{cert.authority} {cert.hours ? `• ${cert.hours}` : ""}</p>
+                    </div>
+                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-white border border-[#E2E8F0] text-[#0EA5E9] uppercase tracking-wider">
+                      {cert.skillArea}
+                    </span>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* 9. Contact / Support Section */}
+      {/* 9. Current Focus Section */}
+      <section className="py-24 md:py-32 px-6 bg-[#F8FAFC] border-y border-[#E2E8F0]/85">
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={stagger}
+            className="space-y-16"
+          >
+            <div className="text-center space-y-3">
+              <motion.span variants={fadeIn} className="text-xs font-bold text-[#0EA5E9] uppercase tracking-widest">
+                Radar
+              </motion.span>
+              <motion.h2 variants={fadeIn} className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#0F172A]">
+                Currently Exploring
+              </motion.h2>
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {currentFocus.map((focus, i) => (
+                <motion.div 
+                  key={i} 
+                  className="bg-white rounded-[24px] p-6 border border-[#E2E8F0] shadow-[0_2px_15px_rgba(0,0,0,0.008)] flex flex-col justify-between space-y-4 hover:shadow-[0_5px_20px_rgba(0,0,0,0.015)] transition-shadow duration-300"
+                  variants={fadeIn}
+                  whileHover={{ y: -2 }}
+                >
+                  <div className="space-y-2">
+                    <div className="text-[10px] font-bold text-[#0EA5E9] uppercase tracking-widest">{focus.subtitle}</div>
+                    <h3 className="text-lg font-extrabold text-[#0F172A] tracking-tight">{focus.title}</h3>
+                  </div>
+                  <p className="text-xs text-[#475569] leading-relaxed font-normal">{focus.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* 10. Contact Section */}
       <section id="contact" className="py-24 md:py-36 px-6 bg-white">
         <div className="max-w-3xl mx-auto text-center">
           <motion.div
@@ -662,17 +681,25 @@ function App() {
           >
             <div className="space-y-4">
               <motion.span variants={fadeIn} className="text-xs font-bold text-[#0EA5E9] uppercase tracking-widest">
-                Support & Inquiries
+                Inquiries
               </motion.span>
               <motion.h2 variants={fadeIn} className="text-4xl md:text-5xl font-extrabold tracking-tight text-[#0F172A]">
-                Let's Build Something Together
+                Let's Connect
               </motion.h2>
-              <motion.p variants={fadeIn} className="text-base text-[#475569] max-w-xl mx-auto font-normal">
-                I am actively seeking internship opportunities, development roles, and academic collaborations. Reach out to discuss artificial intelligence solutions, network defense reviews, or mobile frameworks.
+              <motion.p variants={fadeIn} className="text-base text-[#475569] max-w-xl mx-auto font-normal leading-relaxed">
+                I am actively seeking internships, research roles, and collaborative projects. Let's talk about machine learning models, database architecture, or security compliance.
               </motion.p>
             </div>
 
-            {/* Apple style minimal contact hub */}
+            {/* Tagline / Subtitle */}
+            <motion.div 
+              variants={fadeIn} 
+              className="inline-flex items-center gap-2 px-4 py-1.5 bg-white border border-[#E2E8F0] rounded-full shadow-[0_1px_2px_rgba(0,0,0,0.01)] text-xs font-bold text-[#0EA5E9] tracking-wide uppercase"
+            >
+              AI • Machine Learning • Data Analytics • Cloud
+            </motion.div>
+
+            {/* Apple style support hub */}
             <motion.div 
               variants={fadeIn}
               className="bg-[#F8FAFC] rounded-[32px] p-8 md:p-12 border border-[#E2E8F0] shadow-[0_5px_25px_rgba(0,0,0,0.01)] flex flex-col md:flex-row justify-center items-center gap-6"
@@ -722,8 +749,8 @@ function App() {
         </div>
       </section>
 
-      {/* 10. Stark Premium Footer */}
-      <footer className="bg-white border-t border-[#F1F5F9] py-16 px-6">
+      {/* 11. Stark Footer */}
+      <footer className="bg-white border-t border-[#E2E8F0] py-16 px-6">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="space-y-1.5 text-center md:text-left">
             <h4 className="text-sm font-bold text-[#0F172A]">Arjun Kacha</h4>
